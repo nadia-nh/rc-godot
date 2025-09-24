@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://d3ir376df04gd"]
+[gd_scene load_steps=4 format=3 uid="uid://d3ir376df04gd"]
 
+[ext_resource type="Script" uid="uid://1jwy2yb0ikob" path="res://Scripts/player.gd" id="1_bo1nx"]
 [ext_resource type="Texture2D" uid="uid://0hu2cmq6yy0s" path="res://Sprites/Player/Player.png" id="1_jjgbg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bo1nx"]
@@ -11,6 +12,7 @@ height = 15.0
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Player" type="CharacterBody2D" parent="."]
+script = ExtResource("1_bo1nx")
 
 [node name="Sprite" type="Sprite2D" parent="Player"]
 texture = ExtResource("1_jjgbg")
