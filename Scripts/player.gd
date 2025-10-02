@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
-@export var move_speed: float = 30
+@export var move_speed: float = 30.0
+
 var facing_direction: Vector2
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -22,10 +23,10 @@ func _physics_process(delta: float):
 
 ## Uses velocity and direction to determine which animation to use and plays it
 func _animate():
-    var is_player_moving: bool = velocity.length() > 0
-    var is_direction_horizontal: bool = abs(facing_direction.x) > abs(facing_direction.y)
+    var is_player_moving = velocity.length() > 0
+    var is_direction_horizontal = abs(facing_direction.x) > abs(facing_direction.y)
 
-    var player_state: String = "walk" if is_player_moving else "idle"
+    var player_state = "walk" if is_player_moving else "idle"
     var player_direction: String
 
     ## Facing_direction (x, y) mapping: +x → right, -x → left, +y → down, -y → up
