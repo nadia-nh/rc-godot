@@ -47,7 +47,14 @@ func set_tile_state(coords: Vector2i, tile_type: TileType):
             _used_cells_to_tile_info[coords].tilled = true
 
 func try_till_tile(_player_pos : Vector2):
-    pass
+    var coords := tile_map.local_to_map(_player_pos)
+    var tile_info := _used_cells_to_tile_info[coords]
+    
+    # Don't till a cell if it's already tilled or the crop already exists
+    if tile_info.crop != null or tile_info.tilled:
+        return
+
+    set_tile_state(coords, TileType.TILLED_GRASS)
 
 func try_water_tile(_player_pos : Vector2):
     pass
