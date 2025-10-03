@@ -29,7 +29,26 @@ func _ready():
     for cell in tile_map.get_used_cells():
         _used_cells_to_tile_info[cell] = TileInfo.new()
 
-func set_tile_state(coords: Vector2i, tile_type: TileType):
+func try_till_tile(_player_pos : Vector2):
+    var coords := tile_map.local_to_map(_player_pos)
+    var tile_info := _used_cells_to_tile_info[coords]
+    
+    # Don't till a cell if it's already tilled or the crop already exists
+    if tile_info.crop != null or tile_info.tilled:
+        return
+
+    _set_tile_state(coords, TileType.TILLED_GRASS)
+
+func try_water_tile(_player_pos : Vector2):
+    pass
+
+func try_harvest_tile(_player_pos : Vector2):
+    pass
+
+func try_seed_tile(_player_pos : Vector2, _crop_data : CropData):
+    pass
+
+func _set_tile_state(coords: Vector2i, tile_type: TileType):
     # Update the sprite
     # Source_id = 0 since we're using the first and only tile_set / atlas
     tile_map.set_cell(coords, 0, _tile_type_to_tile_set_coords[tile_type])
@@ -45,22 +64,3 @@ func set_tile_state(coords: Vector2i, tile_type: TileType):
         TileType.TILLED_AND_WATERED_GRASS:
             _used_cells_to_tile_info[coords].tilled = true
             _used_cells_to_tile_info[coords].tilled = true
-
-func try_till_tile(_player_pos : Vector2):
-    var coords := tile_map.local_to_map(_player_pos)
-    var tile_info := _used_cells_to_tile_info[coords]
-    
-    # Don't till a cell if it's already tilled or the crop already exists
-    if tile_info.crop != null or tile_info.tilled:
-        return
-
-    set_tile_state(coords, TileType.TILLED_GRASS)
-
-func try_water_tile(_player_pos : Vector2):
-    pass
-
-func try_harvest_tile(_player_pos : Vector2):
-    pass
-
-func try_seed_tile(_player_pos : Vector2, _crop_data : CropData):
-    pass
