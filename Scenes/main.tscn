@@ -1,8 +1,9 @@
-[gd_scene load_steps=26 format=4 uid="uid://d3ir376df04gd"]
+[gd_scene load_steps=27 format=4 uid="uid://d3ir376df04gd"]
 
 [ext_resource type="Script" uid="uid://1jwy2yb0ikob" path="res://Scripts/player.gd" id="1_bo1nx"]
 [ext_resource type="Texture2D" uid="uid://0hu2cmq6yy0s" path="res://Sprites/Player/Player.png" id="1_jjgbg"]
 [ext_resource type="Texture2D" uid="uid://cgfe4ryk4biuj" path="res://Sprites/Tiles/Tileset.png" id="3_8gbba"]
+[ext_resource type="Script" uid="uid://bg5mou0b2rpv" path="res://Scripts/player_items.gd" id="3_21xkr"]
 [ext_resource type="Script" uid="uid://drnnyh6hywjl1" path="res://Scripts/farm_manager.gd" id="3_kry3j"]
 [ext_resource type="PackedScene" uid="uid://c5pbu48aqq2p5" path="res://Scenes/crop.tscn" id="4_jjvhh"]
 
@@ -203,6 +204,9 @@ shape = SubResource("CapsuleShape2D_bo1nx")
 sprite_frames = SubResource("SpriteFrames_b3802")
 animation = &"walk_left"
 frame_progress = 0.75011134
+
+[node name="PlayerItems" type="Node2D" parent="Player"]
+script = ExtResource("3_21xkr")
 
 [node name="FarmManager" type="Node" parent="."]
 script = ExtResource("3_kry3j")
