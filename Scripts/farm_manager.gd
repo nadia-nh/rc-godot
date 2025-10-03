@@ -45,3 +45,15 @@ func set_tile_state(coords: Vector2i, tile_type: TileType):
         TileType.TILLED_AND_WATERED_GRASS:
             _used_cells_to_tile_info[coords].tilled = true
             _used_cells_to_tile_info[coords].tilled = true
+
+func try_till_tile(_player_pos : Vector2):
+    pass
+
+func try_water_tile(_player_pos : Vector2):
+    pass
+
+func try_harvest_tile(_player_pos : Vector2):
+    pass
+
+func try_seed_tile(_player_pos : Vector2, _crop_data : CropData):
+    pass
